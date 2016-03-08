@@ -14,7 +14,6 @@ extern "C" {
 }
 
 // - - - - - - - - - - - - - - - - - - - -
-
 enum {
 	ERROR_ARGS = 1 ,
 	ERROR_CURL_INIT = 2
@@ -30,7 +29,6 @@ enum {
 } ;
 
 // - - - - - - - - - - - - - - - - - - - -
-
 static size_t write_html(void *ptr, size_t size, size_t count, void *stream){ // 데이터 쓰기 함수
   ((std::string*)stream)->append((char*)ptr, 0, size*count); // stream에 문자열을 추가한다.
   return size*count;
@@ -55,7 +53,7 @@ bool http_get(const char *url, std::string &html)
 
 int main(const int argc , const char** argv)
 {
-  const char* geturl = "https://data.drake.kr/piweb/status.dat";
+  const char* geturl = "https://example.com/piweb/status.dat";
   std::string status;
 
   int i = 0;
@@ -64,8 +62,6 @@ int main(const int argc , const char** argv)
   int interrupts_enabled;
 
   pifacedigital_open(hw_addr);
-
-  //pifacedigital_write_reg(0x00, OUTPUT, hw_addr);
 
   while(1)
   {
